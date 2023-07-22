@@ -22,6 +22,8 @@ import { Input } from "@/components/ui/input";
 import { useParams, useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import { AlertModal } from "@/components/modals/alert-modal";
+import { ApiAlert } from "@/components/ui/api-alert";
 
 interface SettingsFormProps {
   initialData: Store;
@@ -56,8 +58,31 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
       setLoading(false);
     }
   };
+
+  const onDelete= async()=>{
+    try{
+        setLoading(true);
+        await axios.delete(`/api/stores/${params.storeId}`)
+        router.refresh();
+        router.push("/")
+        toast.success("Store deleted!");
+
+    }catch(error){
+       toast.error("Make sure you removed all categories and products")
+
+    }finally{
+        setLoading(false);
+        setOpen(false);
+    }
+  }
   return (
     <>
+    <AlertModal 
+    isOpen={open}
+    onClose={()=>setOpen(false)}
+    onConfirm={onDelete}
+    loading={loading}
+    />
       <div className="text-black flex items-center justify-between">
         <Heading title="Settings" description="Manage store preferences" />
         <Button
@@ -101,6 +126,8 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
           </Button>
         </form>
       </Form>
+      <Separator/>
+      <ApiAlert title="NEXT_PUBLIC_API_URL" description={`${origin}/api/${params.storeId}`} variant="public"/>
     </>
   );
 };
