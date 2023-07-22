@@ -17,6 +17,11 @@ const routes =[
         active: pathname===`/${params.storeId} `,
     },
     {
+        href:`/${params.storeId}/billboards`,
+        lable:'Billboards',
+        active: pathname===`/${params.storeId}/billboard`,
+    },
+    {
         href:`/${params.storeId}/settings`,
         lable:'Settings',
         active: pathname===`/${params.storeId}/settings`,
