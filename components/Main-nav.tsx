@@ -19,7 +19,7 @@ const routes =[
     {
         href:`/${params.storeId}/billboards`,
         lable:'Billboards',
-        active: pathname===`/${params.storeId}/billboard`,
+        active: pathname===`/${params.storeId}/billboards`,
     },
     {
         href:`/${params.storeId}/settings`,
