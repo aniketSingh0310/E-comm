@@ -11,7 +11,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## About this project
+ This is Admin page for the OnClick E-commerce website. Where you can make changes to the frontend website.
+
 
 ## Deployed on Vercel
 
